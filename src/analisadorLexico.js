@@ -36,7 +36,7 @@ const TOKENS = [
       }
   
       if (!matched) {
-        throw new Error(`Caractere inválido na posição ${index}: ${inputString[index]}`);
+        return (`Caractere inválido na posição ${index}: ${inputString[index]}`);
       }
     }
   
