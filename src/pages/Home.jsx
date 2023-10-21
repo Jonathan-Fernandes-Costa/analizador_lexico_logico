@@ -5,6 +5,7 @@ import InputText from "../components/InputText";
 import Analise from "../components/Analise";
 import InputFile from "../components/InputFile";
 import Button from "../components/Button";
+import Descricao from "../components/Descricao";
 
 
 function Home() {
@@ -35,6 +36,7 @@ function Home() {
 
     <div>
       <Header />
+      <Descricao/>
       <div className="p-5 flex">
       <InputText inputText={inputText} setInputText={setInputText}/>
       <InputFile handle={handleFileChange}/>

@@ -5,6 +5,8 @@ const TOKENS = [
     { token: 'NOT', pattern: /!/ },
     { token: 'TRUE', pattern: /True/ },
     { token: 'FALSE', pattern: /False/ },
+    { type: 'PARENTESE_ABRE', pattern: /\(/ },
+    { type: 'PARENTESE_FECHA', pattern: /\)/ },
     { token: 'COMENTARIO', pattern: /\/\/.*/ },
     { token: 'ESPACO', pattern: /\s+/ },
     { token: 'IDENTIFICADOR', pattern: /[a-zA-Z][a-zA-Z0-9]*/ },
