@@ -13,8 +13,7 @@ function Home() {
   const [fileContent, setFileContent] = useState('');
   const [result, setResult] = useState(null);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
+  const handleFileChange = (file) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => setFileContent(e.target.result);
