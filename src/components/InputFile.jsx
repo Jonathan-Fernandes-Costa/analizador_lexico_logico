@@ -32,9 +32,9 @@ function InputFile(props) {
             <div className='flex'>
                 <input id="fileInput" type="file" accept=".txt" className="hidden mt-2" onChange={handleFileChange} />
                 {file && (
-                    <div className="mt-2 flex items-center">
+                    <div className="mt-2 flex flex-col items-center w-auto">
                         <span>{file.name}</span>
-                        <button onClick={removeFile} className="ml-2 px-4 py-1 rounded bg-red-500 text-white">
+                        <button onClick={removeFile} className="px-4 py-1 rounded bg-red-500 text-white">
                             <AiOutlineCloseCircle />
                         </button>
                     </div>
