@@ -24,7 +24,7 @@ function InputFile(props) {
             <label>Ou selecione um arquivo (.txt):</label>
             {!file && (
                 <div className='mt-4 custom-file-upload sm:w-auto md:w-2/3 lg:w-2/4'>
-                    <label htmlFor="fileInput">
+                    <label htmlFor="fileInput" className='cursor-pointer'>
                         Adicionar Arquivo
                     </label>
                 </div>
