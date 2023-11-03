@@ -28,7 +28,7 @@ export function analisadorLexico(inputString) {
         matched = true;
 
         if (token !== 'ESPACO' && token !== 'COMENTARIO') {
-          tokensIdentificados.push({ token, lexema: match[0] });
+          tokensIdentificados.push({ token, value: match[0] });
         }
 
         index += match[0].length;
