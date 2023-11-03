@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-undef
-import fs from "fs"
 const TOKENS = [
   { token: 'PARENTESE_ABRE', pattern: /\(/ },
   { token: 'PARENTESE_FECHA', pattern: /\)/ },
@@ -44,11 +43,3 @@ export function analisadorLexico(inputString) {
 
   return tokensIdentificados;
 }
-
-
-function analisadorLexicoFileCaminho(caminho) {
-  const inputString = fs.readFileSync(caminho, 'utf8');
-  return analisadorLexico(inputString);
-}
-const tokens = analisadorLexicoFileCaminho('./entrada.in');
-console.log(tokens);
