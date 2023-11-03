@@ -21,7 +21,7 @@ function InputFile(props) {
 
     return (
         <div className="ml-5 flex flex-col mt-10 text-lg p-4 w-1/2 rounded-md font-bold bg-white shadow-md">
-            <label>Ou selecione um arquivo (.txt):</label>
+            <label>Ou selecione um arquivo (.in):</label>
             {!file && (
                 <div className='mt-4 custom-file-upload sm:w-auto md:w-2/3 lg:w-2/4'>
                     <label htmlFor="fileInput" className='cursor-pointer'>
@@ -30,7 +30,7 @@ function InputFile(props) {
                 </div>
             )}
             <div className='flex'>
-                <input id="fileInput" type="file" accept=".txt" className="hidden mt-2" onChange={handleFileChange} />
+                <input id="fileInput" type="file" accept=".in" className="hidden mt-2" onChange={handleFileChange} />
                 {file && (
                     <div className="mt-2 flex flex-col items-center w-auto">
                         <span>{file.name}</span>

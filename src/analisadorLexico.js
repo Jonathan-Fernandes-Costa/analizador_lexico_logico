@@ -1,44 +1,54 @@
+// eslint-disable-next-line no-undef
+import fs from "fs"
 const TOKENS = [
-    { token: 'ATRIBUICAO', pattern: /=/ },
-    { token: 'AND', pattern: /\^/ },
-    { token: 'OR', pattern: /v/ },
-    { token: 'NOT', pattern: /!/ },
-    { token: 'TRUE', pattern: /True/ },
-    { token: 'FALSE', pattern: /False/ },
-    { token: 'PARENTESE_ABRE', pattern: /\(/ },
-    { token: 'PARENTESE_FECHA', pattern: /\)/ },
-    { token: 'COMENTARIO', pattern: /\/\/.*/ },
-    { token: 'ESPACO', pattern: /\s+/ },
-    { token: 'IDENTIFICADOR', pattern: /[a-zA-Z][a-zA-Z0-9]*/ },
-  ];
-  
-  export function analisadorLexico(inputString) {
-    let tokensIdentificados = [];
-    let index = 0;
-  
-    while (index < inputString.length) {
-      let matched = false;
-  
-      for (let { token, pattern } of TOKENS) {
-        let regex = new RegExp('^' + pattern.source);
-        let match = inputString.slice(index).match(regex);
-  
-        if (match) {
-          matched = true;
-  
-          if (token !== 'ESPACO' && token !== 'COMENTARIO') {
-            tokensIdentificados.push({ token, value: match[0] });
-          }
-  
-          index += match[0].length;
-          break;
+  { token: 'PARENTESE_ABRE', pattern: /\(/ },
+  { token: 'PARENTESE_FECHA', pattern: /\)/ },
+  { token: 'OU', pattern: /\+/ },
+  { token: 'E', pattern: /\*/ },
+  { token: 'IMPLICA', pattern: /->/ },
+  { token: 'SE_E_SO_SE', pattern: /<->/ },
+  { token: 'NAO', pattern: /¬/ },
+  { token: 'TRUE', pattern: /True/ },
+  { token: 'FALSE', pattern: /False/ },
+  { token: 'COMENTARIO', pattern: /\/\/[^\n]*/ },
+  { token: 'ESPACO', pattern: /\s+/ },
+  { token: 'IDENTIFICADOR', pattern: /[a-zA-Z0-9]{1,100}/ }
+];
+export function analisadorLexico(inputString) {
+  let tokensIdentificados = [];
+  let index = 0;
+
+  while (index < inputString.length) {
+    let matched = false;
+
+    for (let { token, pattern } of TOKENS) {
+      let regex = new RegExp('^' + pattern.source);
+      let match = inputString.slice(index).match(regex);
+
+      if (match) {
+        matched = true;
+
+        if (token !== 'ESPACO' && token !== 'COMENTARIO') {
+          tokensIdentificados.push({ token, lexema: match[0] });
         }
-      }
-  
-      if (!matched) {
-        return (`Caractere inválido na posição ${index}: ${inputString[index]}`);
+
+        index += match[0].length;
+        break;
       }
     }
-  
-    return tokensIdentificados;
+
+    if (!matched) {
+      return (`Caractere inválido na posição ${index}: ${inputString[index]}`);
+    }
   }
+
+  return tokensIdentificados;
+}
+
+
+function analisadorLexicoFileCaminho(caminho) {
+  const inputString = fs.readFileSync(caminho, 'utf8');
+  return analisadorLexico(inputString);
+}
+const tokens = analisadorLexicoFileCaminho('./entrada.in');
+console.log(tokens);
